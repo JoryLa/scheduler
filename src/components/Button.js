@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; // option
 import classNames from "classnames";
 
 import "components/Button.scss";

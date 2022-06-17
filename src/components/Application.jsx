@@ -52,7 +52,7 @@ export default function Application(props) {
       // console.log('respone', response);
       setDays([...response.data]);
     });
-  }, []) 
+  }, [])
 
   return (
     <main className="layout">

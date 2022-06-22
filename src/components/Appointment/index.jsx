@@ -23,7 +23,7 @@ export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
-  console.log({ mode });
+  //console.log({ mode });
   //console.log('index show prop', props)
   const { interview, time, interviewers } = props;
   let studentName = '';

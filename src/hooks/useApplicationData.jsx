@@ -30,12 +30,13 @@ export default function useApplicationData() {
         interviewers: interviewers.data
       }));
 
-      console.log('interviewers: ', interviewers.data);
+      //console.log('interviewers: ', interviewers.data);
     });
   }, [])
 
   // bookInterview
   function bookInterview(id, interview) {
+
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -48,10 +49,16 @@ export default function useApplicationData() {
 
     return axios.put(`/api/appointments/${id}`, { interview })
       .then(() => {
+        const day = state.days.find(item => item.name === state.day)
+        day.spots -= 1;
+        const days = state.days;
+        const dayIndex = days.findIndex(item => day.name === item.name)
+        days.splice(dayIndex, 1, day)
         setState({
           ...state,
-          appointments
-        });
+          appointments,
+          days
+        })
       })
   }
 
@@ -69,9 +76,15 @@ export default function useApplicationData() {
 
     return axios.delete(`/api/appointments/${id}`)
       .then(() => {
+        const day = state.days.find(item => item.name === state.day)
+        day.spots += 1;
+        const days = state.days;
+        const dayIndex = days.findIndex(item => day.name === item.name)
+        days.splice(dayIndex, 1, day)
         setState({
           ...state,
-          appointments
+          appointments,
+          days
         });
       })
   }

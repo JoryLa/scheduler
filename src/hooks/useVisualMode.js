@@ -1,4 +1,3 @@
-import React, { useTransition } from "react";
 import { useState } from "react";
 
 export default function useVisualMode(initial) {

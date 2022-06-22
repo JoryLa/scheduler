@@ -18,7 +18,9 @@ export default function useApplicationData() {
     Promise.all([
       axios.get('/api/days'),
       axios.get('/api/appointments'),
-      axios.get('/api/interviewers')
+      axios.get('/api/interviewers'),
+      // VVV RESETS/RANDOMIZES DB VVV
+      axios.get('/api/debug/reset')
     ]).then((all) => {
       const [days, appointments, interviewers] = all;
       setState(prev => ({

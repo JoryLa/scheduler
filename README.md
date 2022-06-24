@@ -24,10 +24,13 @@ npm run storybook
 
 ## Screenshots
 - Main View
- !["Main"] (https://github.com/JoryLa/scheduler/blob/master/docs/main.png?raw=true)
+ ! (https://github.com/JoryLa/scheduler/blob/master/docs/main.png?raw=true)
 
 - Creating/editing appointment
-!["Add"] (https://github.com/JoryLa/scheduler/blob/master/docs/adding-appointment.png?raw=true)
+! (https://github.com/JoryLa/scheduler/blob/master/docs/adding-appointment.png?raw=true)
 
 - Deleting appointment
-!["Delete"] (https://github.com/JoryLa/scheduler/blob/master/docs/deleting-appointment.png?raw=true)
+! (https://github.com/JoryLa/scheduler/blob/master/docs/deleting-appointment.png?raw=true)
+
+ - Screenshot of tablet view
+!["Screenshot of tablet view"](https://github.com/JoryLa/TweeterTemplate/blob/master/docs/Tablet-view.png?raw=true)

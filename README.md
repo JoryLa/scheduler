@@ -10,6 +10,14 @@ Install dependencies with `npm install`.
 npm start
 ```
 
+## Running API Server
+
+- Clone this repo https://github.com/lighthouse-labs/scheduler-api
+
+```sh
+npm start
+```
+
 ## Running Jest Test Framework
 
 ```sh
@@ -21,6 +29,14 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## Dependecies
+
+- Axios
+- React
+# For testing:
+- Jest
+- Storybook
 
 ## Screenshots
 - Main View

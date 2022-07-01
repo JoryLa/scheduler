@@ -50,14 +50,18 @@ export default function useApplicationData() {
     return axios.put(`/api/appointments/${id}`, { interview })
       .then(() => {
         const day = state.days.find(item => item.name === state.day)
-        day.spots -= 1;
-        const days = state.days;
-        const dayIndex = days.findIndex(item => day.name === item.name)
-        days.splice(dayIndex, 1, day)
+        if (interview) {
+          day.spots -= 1;
+          const days = state.days;
+          const dayIndex = days.findIndex(item => day.name === item.name)
+          days.splice(dayIndex, 1, day)
+          setState({
+            days
+          })
+        }
         setState({
           ...state,
           appointments,
-          days
         })
       })
   }

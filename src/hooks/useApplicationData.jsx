@@ -47,21 +47,26 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
+    const updatedSpotsForDays = (dayName, days, appointments) => {
+      const dayObj = days.find(item => item.name === state.day)
+      let spots = 0;
+      dayObj.appointments.forEach(id => {
+        if (!appointments[id].interview) {
+          spots += 1;
+        }
+      })
+      const newDay = { ...dayObj, spots }
+      return days.map(day => day.name === dayName ? newDay : day);
+    }
+
     return axios.put(`/api/appointments/${id}`, { interview })
       .then(() => {
-        const day = state.days.find(item => item.name === state.day)
-        if (interview) {
-          day.spots -= 1;
-          const days = state.days;
-          const dayIndex = days.findIndex(item => day.name === item.name)
-          days.splice(dayIndex, 1, day)
-          setState({
-            days
-          })
-        }
-        setState({
-          ...state,
-          appointments,
+        setState(prev => {
+          return {
+            ...prev,
+            appointments,
+            days: updatedSpotsForDays(prev.day, prev.days, appointments)
+          }
         })
       })
   }

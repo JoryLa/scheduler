@@ -23,14 +23,11 @@ export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
-  //console.log({ mode });
-  //console.log('index show prop', props)
-  const { interview, time, interviewers } = props;
+
+  const { interview, time } = props;
   let studentName = '';
-  let interviewerName = '';
   if (interview) {
     studentName = interview.student;
-    //interviewerName = interviewers[interview.interviewer].name
   }
 
   function save(name, interviewer) {
@@ -53,10 +50,6 @@ export default function Appointment(props) {
       .catch(() => transition(ERR_DELETE, true))
   }
 
-
-
-
-  //console.log('interviewerName ', interviewerName);
   return (
     <article className="appointment">
       <Header time={time} />
@@ -93,7 +86,7 @@ export default function Appointment(props) {
       onClose={back}/>}
       {mode === ERR_SAVE && <Error 
       message='create'
-      onClose={back}/>}
+      onClose={() => transition(CREATE)}/>}
     </article>
   )
 }
